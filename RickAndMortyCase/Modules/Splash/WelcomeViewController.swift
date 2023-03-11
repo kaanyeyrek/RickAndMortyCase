@@ -43,8 +43,8 @@ final class WelcomeViewController: UIViewController {
         doneButton.addTarget(self, action: #selector(didTappedDoneButton), for: .touchUpInside)
     }
     @objc private func didTappedDoneButton() {
-        let vc = HomeViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let homeVC = HomeBuilder.make()
+        navigationController?.pushViewController(homeVC, animated: true)
     }
     private func setLayout() {
         logoImage.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 80, height: 120))

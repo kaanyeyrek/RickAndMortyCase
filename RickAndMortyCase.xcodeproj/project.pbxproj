@@ -19,6 +19,7 @@
 		CE0ADFC029BA750D005A8C48 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */; };
 		CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC129BA8000005A8C48 /* AppContainer.swift */; };
 		CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC329BA804A005A8C48 /* AppRouter.swift */; };
+		CE62A24D29BD15CC00683A49 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62A24C29BD15CC00683A49 /* RMModel.swift */; };
 		CEEA72BB29BB7258009E3549 /* RMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BA29BB7258009E3549 /* RMImage.swift */; };
 		CEEA72BD29BB72E4009E3549 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BC29BB72E4009E3549 /* Extensions.swift */; };
 		CEEA72BF29BB730E009E3549 /* CheckFirstLoginMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BE29BB730E009E3549 /* CheckFirstLoginMethod.swift */; };
@@ -43,6 +44,7 @@
 		CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		CE0ADFC129BA8000005A8C48 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		CE0ADFC329BA804A005A8C48 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		CE62A24C29BD15CC00683A49 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RMModel.swift; path = ../../../../Downloads/RMModel.swift; sourceTree = "<group>"; };
 		CEEA72BA29BB7258009E3549 /* RMImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImage.swift; sourceTree = "<group>"; };
 		CEEA72BC29BB72E4009E3549 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEEA72BE29BB730E009E3549 /* CheckFirstLoginMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstLoginMethod.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		CE0ADFB229BA742F005A8C48 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				CE62A24C29BD15CC00683A49 /* RMModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -150,9 +153,7 @@
 		CE0ADFB529BA745E005A8C48 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CEEA72BA29BB7258009E3549 /* RMImage.swift */,
-				CEEA72C529BB8131009E3549 /* RMLabel.swift */,
-				CEEA72C729BB9327009E3549 /* RMButton.swift */,
+				CE5E60F229BBCE560039D832 /* Reusable Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,6 +169,16 @@
 				CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */,
 			);
 			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		CE5E60F229BBCE560039D832 /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+				CEEA72BA29BB7258009E3549 /* RMImage.swift */,
+				CEEA72C529BB8131009E3549 /* RMLabel.swift */,
+				CEEA72C729BB9327009E3549 /* RMButton.swift */,
+			);
+			path = "Reusable Components";
 			sourceTree = "<group>";
 		};
 		CEEA72C029BB75A5009E3549 /* Splash */ = {
@@ -250,6 +261,7 @@
 			files = (
 				CEEA72C829BB9327009E3549 /* RMButton.swift in Sources */,
 				CE0ADFB829BA74C5005A8C48 /* HomeContracts.swift in Sources */,
+				CE62A24D29BD15CC00683A49 /* RMModel.swift in Sources */,
 				CE0ADFA029BA688C005A8C48 /* HomeViewController.swift in Sources */,
 				CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */,
 				CE0ADFBE29BA74FE005A8C48 /* HomeRouter.swift in Sources */,

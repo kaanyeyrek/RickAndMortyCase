@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+final class HomeInteractor: HomeInteractorProtocol {
+    
+    weak var delegate: HomeInteractorDelegate?
+    
+    init() {
+        
+    }
+}
