@@ -8,7 +8,7 @@
 import Foundation
 
 final class HomeInteractor: HomeInteractorProtocol {
-    
+    //delegation
     weak var delegate: HomeInteractorDelegate?
     
     init() {

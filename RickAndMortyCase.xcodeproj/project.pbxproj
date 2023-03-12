@@ -19,7 +19,6 @@
 		CE0ADFC029BA750D005A8C48 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */; };
 		CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC129BA8000005A8C48 /* AppContainer.swift */; };
 		CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC329BA804A005A8C48 /* AppRouter.swift */; };
-		CE62A24D29BD15CC00683A49 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62A24C29BD15CC00683A49 /* RMModel.swift */; };
 		CEEA72BB29BB7258009E3549 /* RMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BA29BB7258009E3549 /* RMImage.swift */; };
 		CEEA72BD29BB72E4009E3549 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BC29BB72E4009E3549 /* Extensions.swift */; };
 		CEEA72BF29BB730E009E3549 /* CheckFirstLoginMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BE29BB730E009E3549 /* CheckFirstLoginMethod.swift */; };
@@ -44,7 +43,7 @@
 		CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		CE0ADFC129BA8000005A8C48 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		CE0ADFC329BA804A005A8C48 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		CE62A24C29BD15CC00683A49 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RMModel.swift; path = ../../../../Downloads/RMModel.swift; sourceTree = "<group>"; };
+		CEE4AF1929BE61D900F5A4F3 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		CEEA72BA29BB7258009E3549 /* RMImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImage.swift; sourceTree = "<group>"; };
 		CEEA72BC29BB72E4009E3549 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEEA72BE29BB730E009E3549 /* CheckFirstLoginMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstLoginMethod.swift; sourceTree = "<group>"; };
@@ -128,7 +127,8 @@
 		CE0ADFB229BA742F005A8C48 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				CE62A24C29BD15CC00683A49 /* RMModel.swift */,
+				CEE4AF1629BE61B600F5A4F3 /* HomePresentation */,
+				CEE4AF1729BE61C700F5A4F3 /* RequestModel */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -146,6 +146,8 @@
 		CE0ADFB429BA7453005A8C48 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CEE4AF1329BE610A00F5A4F3 /* Base */,
+				CEE4AF1229BE60E600F5A4F3 /* RMEndpointService */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -179,6 +181,51 @@
 				CEEA72C729BB9327009E3549 /* RMButton.swift */,
 			);
 			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		CEE4AF1229BE60E600F5A4F3 /* RMEndpointService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RMEndpointService;
+			sourceTree = "<group>";
+		};
+		CEE4AF1329BE610A00F5A4F3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CEE4AF1529BE612600F5A4F3 /* RESTfulSettings */,
+				CEE4AF1429BE612400F5A4F3 /* CoreService */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CEE4AF1429BE612400F5A4F3 /* CoreService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreService;
+			sourceTree = "<group>";
+		};
+		CEE4AF1529BE612600F5A4F3 /* RESTfulSettings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RESTfulSettings;
+			sourceTree = "<group>";
+		};
+		CEE4AF1629BE61B600F5A4F3 /* HomePresentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomePresentation;
+			sourceTree = "<group>";
+		};
+		CEE4AF1729BE61C700F5A4F3 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEE4AF1929BE61D900F5A4F3 /* RMModel.swift */,
+			);
+			path = RequestModel;
 			sourceTree = "<group>";
 		};
 		CEEA72C029BB75A5009E3549 /* Splash */ = {
@@ -261,7 +308,6 @@
 			files = (
 				CEEA72C829BB9327009E3549 /* RMButton.swift in Sources */,
 				CE0ADFB829BA74C5005A8C48 /* HomeContracts.swift in Sources */,
-				CE62A24D29BD15CC00683A49 /* RMModel.swift in Sources */,
 				CE0ADFA029BA688C005A8C48 /* HomeViewController.swift in Sources */,
 				CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */,
 				CE0ADFBE29BA74FE005A8C48 /* HomeRouter.swift in Sources */,

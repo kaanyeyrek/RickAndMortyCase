@@ -8,13 +8,13 @@
 import UIKit
 
 final class WelcomeViewController: UIViewController {
-    
+//MARK: - Global
     private let logoImage = RMImage(radius: nil, setImage: UIImage(named: CustomImage.logo))
     private let welcomeLabel = RMLabel(setText: "Welcome!", setTextColor: .black, size: 30, setAlignment: .center, setFontName: "Copperplate")
     private let doneButton = RMButton(radius: 20, setBackGroundColor: .darkGray, title: "Let's Go!", titleColor: .white, fontName: "San Francisco", fontSize: 25)
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+//MARK: - LifeCycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let check = CheckFirstLoginMethod().isNewUser()
         if check {
             welcomeLabel.text = "Hello!"

@@ -9,6 +9,7 @@ import Foundation
 
 final class HomePresenter: HomePresenterProtocol {
     
+    // Dependencys
     private weak var view: HomeViewProtocol?
     private let interactor: HomeInteractorProtocol
     private let router: HomeRouterProtocol
@@ -19,7 +20,7 @@ final class HomePresenter: HomePresenterProtocol {
         self.router = router
     }
 }
-//MARK: - HomeInteractor Delegate
+//MARK: - HomeInteractor Delegate / Handling HomeInteractorOutput
 extension HomePresenter: HomeInteractorDelegate {
     func handleOutput(_ output: HomeInteractorOutput) {
         
