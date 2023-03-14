@@ -15,6 +15,9 @@ final class HomeViewController: UIViewController {
     // UI Elements
     private var collection: UICollectionView!
     private let logoImage = RMImage(radius: nil, setImage: UIImage(named: CustomImage.logo))
+    private let categoryStackView = UIStackView()
+    private let scrollView = UIScrollView()
+    private var selectedButton: [UIButton] = []
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,9 +28,12 @@ final class HomeViewController: UIViewController {
         setUI()
         setCollectionDefaultLayout()
         setSubviews()
+        setStackView()
+        createCategoriesButton()
         setLayout()
         setRegisterCollection()
         setOwner()
+        setScrollView()
     }
     private func setUI() {
         view.backgroundColor = .systemBackground
@@ -40,9 +46,15 @@ final class HomeViewController: UIViewController {
         
         logoImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50), size: .init(width: 50, height: 100))
         logoImage.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
+        
+        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: collection.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.frame.width, height: 50))
+        scrollView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
+        
+        categoryStackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: scrollView.frame.width, height: 50))
+        categoryStackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor).isActive = true
     }
     private func setSubviews() {
-        [collection, logoImage].forEach { elements in
+        [collection, logoImage, scrollView].forEach { elements in
             view.addSubview(elements)
         }
     }
@@ -55,6 +67,41 @@ final class HomeViewController: UIViewController {
         layout.scrollDirection = .vertical
         collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.showsVerticalScrollIndicator = false
+    }
+    private func setScrollView() {
+        scrollView.contentSize = CGSize(width: categoryStackView.frame.width, height: categoryStackView.frame.height)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    private func setStackView() {
+        scrollView.addSubview(categoryStackView)
+        categoryStackView.axis = .horizontal
+        categoryStackView.spacing = 10
+        categoryStackView.distribution = .equalSpacing
+    }
+    private func createCategoriesButton() {
+        for _ in 1...20 {
+            let config = UIButton.Configuration.filled()
+            let button = RMButton(radius: 10, setBackGroundColor: nil, title: "Categories", titleColor: .white, fontName: "San Francisco", fontSize: 25, textAlign: .center, configuration: config)
+            button.layer.borderWidth = 1.5
+            button.layer.borderColor = UIColor.black.cgColor
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.minimumScaleFactor = 0.5
+            button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+            button.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            button.addTarget(self, action: #selector(didTappedCategoryButton(index:)), for: .touchUpInside)
+            categoryStackView.addArrangedSubview(button)
+        }
+    }
+//MARK: - @objc actions
+    @objc private func didTappedCategoryButton(index: UIButton) {
+        for previousSelectedButton in selectedButton {
+            previousSelectedButton.configuration?.baseBackgroundColor = UIColor(hex: Color.purple)
+        }
+        index.configuration?.baseBackgroundColor = UIColor(hex: Color.selectedCategoryColor)
+        selectedButton = [index]
     }
 }
 //MARK: - UICollectionViewDataSource Methods

@@ -19,6 +19,12 @@
 		CE0ADFC029BA750D005A8C48 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */; };
 		CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC129BA8000005A8C48 /* AppContainer.swift */; };
 		CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC329BA804A005A8C48 /* AppRouter.swift */; };
+		CEAFB2D629C11A580093AE07 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */; };
+		CEAFB2D829C11AB90093AE07 /* HTTPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */; };
+		CEAFB2DA29C11B670093AE07 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D929C11B670093AE07 /* Path.swift */; };
+		CEAFB2DC29C11C0B0093AE07 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2DB29C11C0B0093AE07 /* CoreService.swift */; };
+		CEAFB2DE29C11C120093AE07 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2DD29C11C120093AE07 /* NetworkError.swift */; };
+		CEAFB2E429C1205A0093AE07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEAFB2E329C1205A0093AE07 /* Alamofire */; };
 		CEEA72BB29BB7258009E3549 /* RMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BA29BB7258009E3549 /* RMImage.swift */; };
 		CEEA72BD29BB72E4009E3549 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BC29BB72E4009E3549 /* Extensions.swift */; };
 		CEEA72BF29BB730E009E3549 /* CheckFirstLoginMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72BE29BB730E009E3549 /* CheckFirstLoginMethod.swift */; };
@@ -43,6 +49,11 @@
 		CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		CE0ADFC129BA8000005A8C48 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		CE0ADFC329BA804A005A8C48 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEndpoint.swift; sourceTree = "<group>"; };
+		CEAFB2D929C11B670093AE07 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		CEAFB2DB29C11C0B0093AE07 /* CoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
+		CEAFB2DD29C11C120093AE07 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CEE4AF1929BE61D900F5A4F3 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		CEEA72BA29BB7258009E3549 /* RMImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImage.swift; sourceTree = "<group>"; };
 		CEEA72BC29BB72E4009E3549 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -58,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAFB2E429C1205A0093AE07 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +214,8 @@
 		CEE4AF1429BE612400F5A4F3 /* CoreService */ = {
 			isa = PBXGroup;
 			children = (
+				CEAFB2DD29C11C120093AE07 /* NetworkError.swift */,
+				CEAFB2DB29C11C0B0093AE07 /* CoreService.swift */,
 			);
 			path = CoreService;
 			sourceTree = "<group>";
@@ -209,6 +223,9 @@
 		CEE4AF1529BE612600F5A4F3 /* RESTfulSettings */ = {
 			isa = PBXGroup;
 			children = (
+				CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */,
+				CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */,
+				CEAFB2D929C11B670093AE07 /* Path.swift */,
 			);
 			path = RESTfulSettings;
 			sourceTree = "<group>";
@@ -252,6 +269,9 @@
 			dependencies = (
 			);
 			name = RickAndMortyCase;
+			packageProductDependencies = (
+				CEAFB2E329C1205A0093AE07 /* Alamofire */,
+			);
 			productName = RickAndMortyCase;
 			productReference = CE0ADF9829BA688C005A8C48 /* RickAndMortyCase.app */;
 			productType = "com.apple.product-type.application";
@@ -280,6 +300,9 @@
 				Base,
 			);
 			mainGroup = CE0ADF8F29BA688C005A8C48;
+			packageReferences = (
+				CEAFB2E229C1205A0093AE07 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = CE0ADF9929BA688C005A8C48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,17 +334,22 @@
 				CE0ADFA029BA688C005A8C48 /* HomeViewController.swift in Sources */,
 				CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */,
 				CE0ADFBE29BA74FE005A8C48 /* HomeRouter.swift in Sources */,
+				CEAFB2DC29C11C0B0093AE07 /* CoreService.swift in Sources */,
 				CE0ADF9C29BA688C005A8C48 /* AppDelegate.swift in Sources */,
 				CEEA72C429BB7918009E3549 /* Constants.swift in Sources */,
 				CE0ADFC029BA750D005A8C48 /* HomeBuilder.swift in Sources */,
+				CEAFB2DE29C11C120093AE07 /* NetworkError.swift in Sources */,
 				CEEA72C629BB8131009E3549 /* RMLabel.swift in Sources */,
 				CEEA72BF29BB730E009E3549 /* CheckFirstLoginMethod.swift in Sources */,
 				CE0ADFBC29BA74E7005A8C48 /* HomeInteractor.swift in Sources */,
 				CEEA72BD29BB72E4009E3549 /* Extensions.swift in Sources */,
 				CE0ADFBA29BA74D8005A8C48 /* HomePresenter.swift in Sources */,
+				CEAFB2D829C11AB90093AE07 /* HTTPEndpoint.swift in Sources */,
 				CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */,
+				CEAFB2D629C11A580093AE07 /* HTTPMethod.swift in Sources */,
 				CEEA72BB29BB7258009E3549 /* RMImage.swift in Sources */,
 				CE0ADF9E29BA688C005A8C48 /* SceneDelegate.swift in Sources */,
+				CEAFB2DA29C11B670093AE07 /* Path.swift in Sources */,
 				CEEA72C229BB75B7009E3549 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +558,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEAFB2E229C1205A0093AE07 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEAFB2E329C1205A0093AE07 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEAFB2E229C1205A0093AE07 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE0ADF9029BA688C005A8C48 /* Project object */;
 }
