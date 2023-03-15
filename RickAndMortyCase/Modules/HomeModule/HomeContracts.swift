@@ -10,9 +10,11 @@ import Foundation
 //MARK: - Interactor
 protocol HomeInteractorProtocol: AnyObject {
     var delegate: HomeInteractorDelegate? { get set }
+    func load()
+    func fetchCategoryLocations()
 }
 enum HomeInteractorOutput {
-    
+    case showCategoryLocations([Locations])
 }
 protocol HomeInteractorDelegate: AnyObject {
     func handleOutput(_ output: HomeInteractorOutput)
@@ -20,10 +22,10 @@ protocol HomeInteractorDelegate: AnyObject {
 
 //MARK: - Presenter
 protocol HomePresenterProtocol: AnyObject {
-    
+   func load()
 }
 enum HomePresenterOutput {
-    
+    case showLocations([HomePresentation])
 }
 //MARK: - View
 protocol HomeViewProtocol: AnyObject {

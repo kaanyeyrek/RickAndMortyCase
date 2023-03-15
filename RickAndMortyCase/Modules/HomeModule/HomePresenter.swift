@@ -19,10 +19,17 @@ final class HomePresenter: HomePresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
+    func load() {
+        interactor.load()
+    }
 }
 //MARK: - HomeInteractor Delegate / Handling HomeInteractorOutput
 extension HomePresenter: HomeInteractorDelegate {
     func handleOutput(_ output: HomeInteractorOutput) {
-        
+        switch output {
+        case .showCategoryLocations(let location):
+            let locationPresentation = location.map {HomePresentation(model: $0)}
+            view?.handleOutput(.showLocations(locationPresentation))
+        }
     }
 }

@@ -18,6 +18,7 @@ final class HomeViewController: UIViewController {
     private let categoryStackView = UIStackView()
     private let scrollView = UIScrollView()
     private var selectedButton: [UIButton] = []
+    private var locationPresentation: [HomePresentation] = []
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,11 +26,11 @@ final class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.load()
         setUI()
         setCollectionDefaultLayout()
         setSubviews()
         setStackView()
-        createCategoriesButton()
         setLayout()
         setRegisterCollection()
         setOwner()
@@ -77,22 +78,24 @@ final class HomeViewController: UIViewController {
     private func setStackView() {
         scrollView.addSubview(categoryStackView)
         categoryStackView.axis = .horizontal
-        categoryStackView.spacing = 10
-        categoryStackView.distribution = .equalSpacing
+        categoryStackView.distribution = .fillProportionally
+        categoryStackView.spacing = 13
     }
     private func createCategoriesButton() {
-        for _ in 1...20 {
-            let config = UIButton.Configuration.filled()
-            let button = RMButton(radius: 10, setBackGroundColor: nil, title: "Categories", titleColor: .white, fontName: "San Francisco", fontSize: 25, textAlign: .center, configuration: config)
-            button.layer.borderWidth = 1.5
-            button.layer.borderColor = UIColor.black.cgColor
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.minimumScaleFactor = 0.5
-            button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-            button.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-            button.addTarget(self, action: #selector(didTappedCategoryButton(index:)), for: .touchUpInside)
-            categoryStackView.addArrangedSubview(button)
+        if !locationPresentation.isEmpty {
+            for index in 0..<locationPresentation.count {
+                let config = UIButton.Configuration.filled()
+                let categoryButton = RMButton(radius: 10, setBackGroundColor: nil, title: locationPresentation[index].name, titleColor: .white, fontName: "San Francisco", fontSize: 25, textAlign: .center, configuration: config)
+                categoryButton.layer.borderWidth = 1.5
+                categoryButton.layer.borderColor = UIColor.black.cgColor
+                categoryButton.titleLabel?.adjustsFontSizeToFitWidth = true
+                categoryButton.titleLabel?.minimumScaleFactor = 0.5
+                categoryButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+                categoryButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+                categoryButton.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+                categoryButton.addTarget(self, action: #selector(didTappedCategoryButton), for: .touchUpInside)
+                categoryStackView.addArrangedSubview(categoryButton)
+            }
         }
     }
 //MARK: - @objc actions
@@ -102,6 +105,18 @@ final class HomeViewController: UIViewController {
         }
         index.configuration?.baseBackgroundColor = UIColor(hex: Color.selectedCategoryColor)
         selectedButton = [index]
+        guard let category = index.currentTitle else {
+              return
+          }
+          if let categoryPresentation = locationPresentation.first(where: {$0.name == category}) {
+             var ids = [String]()
+              for url in categoryPresentation.residents {
+                  if let urls = URL(string: url) {
+                      let id = urls.lastPathComponent
+                      ids.append(id)
+                  }
+              }
+          }
     }
 }
 //MARK: - UICollectionViewDataSource Methods
@@ -138,7 +153,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - HomeViewProtocol / Handling PresenterOutput
 extension HomeViewController: HomeViewProtocol {
     func handleOutput(_ output: HomePresenterOutput) {
-        
+        switch output {
+        case .showLocations(let locationPresentation):
+            self.locationPresentation = locationPresentation
+            createCategoriesButton()
+        }
     }
 }
 
