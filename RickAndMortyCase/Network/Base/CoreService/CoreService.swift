@@ -10,6 +10,7 @@ import Alamofire
 
 protocol CoreServiceProtocol: AnyObject {
     func fetch<T: Decodable>(endPoint: HTTPEndpoint, completion: @escaping (Result<T, NetworkError>) -> Void)
+    func fetchArray<T: Decodable>(endPoint: HTTPEndpoint, completion: @escaping (Result<[T], NetworkError>) -> Void)
 }
 
 final class CoreService: CoreServiceProtocol {
@@ -32,6 +33,49 @@ final class CoreService: CoreServiceProtocol {
             switch response.result {
             case .success(let decodedData):
                 completion(.success(decodedData))
+            case .failure(let error):
+                switch error {
+                case .responseValidationFailed(let reason):
+                    print(reason)
+                    completion(.failure(.unexpectedStatusCode))
+                default:
+                    print(error)
+                    completion(.failure(.badResponse))
+                }
+            }
+        }
+    }
+    // Fetch Array Request
+    func fetchArray<T>(endPoint: HTTPEndpoint, completion: @escaping (Result<[T], NetworkError>) -> Void) where T : Decodable {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = endPoint.scheme
+        urlComponents.host = endPoint.host
+        urlComponents.path = endPoint.path
+        urlComponents.queryItems = endPoint.query
+        
+        guard let url = urlComponents.url else { return
+            completion(.failure(.badURL))
+        }
+        print(url)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = endPoint.method.rawValue
+        
+        AF.request(urlRequest).validate(statusCode: 200..<300).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode([T].self, from: data)
+                        completion(.success(decodedData))
+                    } catch  {
+                        print("single api object")
+                do {
+                    let decodedData = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success([decodedData]))
+                    } catch {
+                        print(error)
+                        completion(.failure(.decoding))
+                            }
+                    }
             case .failure(let error):
                 switch error {
                 case .responseValidationFailed(let reason):

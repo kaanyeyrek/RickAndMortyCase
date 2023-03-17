@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Path {
-    static let location = "/api/location"
+enum Path: String {
+    case location = "/api/location"
 }

@@ -12,9 +12,11 @@ protocol HomeInteractorProtocol: AnyObject {
     var delegate: HomeInteractorDelegate? { get set }
     func load()
     func fetchCategoryLocations()
+    func showSelectedLocationCharacters(with ids: [String])
 }
 enum HomeInteractorOutput {
     case showCategoryLocations([Locations])
+    case showSelectedLocations([Character])
 }
 protocol HomeInteractorDelegate: AnyObject {
     func handleOutput(_ output: HomeInteractorOutput)
@@ -23,6 +25,7 @@ protocol HomeInteractorDelegate: AnyObject {
 //MARK: - Presenter
 protocol HomePresenterProtocol: AnyObject {
    func load()
+    func didTappedCategoryButton(with ids: [String])
 }
 enum HomePresenterOutput {
     case showLocations([HomePresentation])

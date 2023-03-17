@@ -116,6 +116,7 @@ final class HomeViewController: UIViewController {
                       ids.append(id)
                   }
               }
+              presenter.didTappedCategoryButton(with: ids)
           }
     }
 }

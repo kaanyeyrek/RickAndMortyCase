@@ -19,6 +19,7 @@
 		CE0ADFC029BA750D005A8C48 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */; };
 		CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC129BA8000005A8C48 /* AppContainer.swift */; };
 		CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ADFC329BA804A005A8C48 /* AppRouter.swift */; };
+		CE5487FD29C3BB1B00A1A4D2 /* MultipleCharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5487FC29C3BB1B00A1A4D2 /* MultipleCharactersModel.swift */; };
 		CE57C58229C207F1007876F7 /* RMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58129C207F1007876F7 /* RMService.swift */; };
 		CE57C58429C207FA007876F7 /* RMEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58329C207FA007876F7 /* RMEndpoint.swift */; };
 		CE57C58629C227B9007876F7 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58529C227B9007876F7 /* RMModel.swift */; };
@@ -53,6 +54,7 @@
 		CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		CE0ADFC129BA8000005A8C48 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		CE0ADFC329BA804A005A8C48 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		CE5487FC29C3BB1B00A1A4D2 /* MultipleCharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCharactersModel.swift; sourceTree = "<group>"; };
 		CE57C58129C207F1007876F7 /* RMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMService.swift; sourceTree = "<group>"; };
 		CE57C58329C207FA007876F7 /* RMEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEndpoint.swift; sourceTree = "<group>"; };
 		CE57C58529C227B9007876F7 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				CE57C58529C227B9007876F7 /* RMModel.swift */,
+				CE5487FC29C3BB1B00A1A4D2 /* MultipleCharactersModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				CEEA72BF29BB730E009E3549 /* CheckFirstLoginMethod.swift in Sources */,
 				CE0ADFBC29BA74E7005A8C48 /* HomeInteractor.swift in Sources */,
 				CEEA72BD29BB72E4009E3549 /* Extensions.swift in Sources */,
+				CE5487FD29C3BB1B00A1A4D2 /* MultipleCharactersModel.swift in Sources */,
 				CE0ADFBA29BA74D8005A8C48 /* HomePresenter.swift in Sources */,
 				CEAFB2D829C11AB90093AE07 /* HTTPEndpoint.swift in Sources */,
 				CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */,

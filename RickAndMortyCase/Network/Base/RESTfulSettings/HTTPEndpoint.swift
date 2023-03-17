@@ -11,7 +11,7 @@ protocol HTTPEndpoint {
     var scheme: String { get }
     var host: String { get }
     var path: String { get }
-    var query: [URLQueryItem] { get }
+    var query: [URLQueryItem]? { get }
     var method: HTTPMethod { get }
 }
 extension HTTPEndpoint {
