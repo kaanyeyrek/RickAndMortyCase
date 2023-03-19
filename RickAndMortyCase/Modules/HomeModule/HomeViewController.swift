@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     private let scrollView = UIScrollView()
     private var selectedButton: [UIButton] = []
     private var locationPresentation: [HomePresentation] = []
+    private var multipleCharactersPresentation: [CharacterPresentation] = []
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,7 +41,7 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     private func setRegisterCollection() {
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: ReuseIdemtifier.characters)
     }
     private func setLayout() {
         collection.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.frame.width, height: view.frame.height-250))
@@ -109,13 +110,7 @@ final class HomeViewController: UIViewController {
               return
           }
           if let categoryPresentation = locationPresentation.first(where: {$0.name == category}) {
-             var ids = [String]()
-              for url in categoryPresentation.residents {
-                  if let urls = URL(string: url) {
-                      let id = urls.lastPathComponent
-                      ids.append(id)
-                  }
-              }
+              let ids = categoryPresentation.residents.compactMap { URL(string: $0)?.lastPathComponent}
               presenter.didTappedCategoryButton(with: ids)
           }
     }
@@ -123,12 +118,16 @@ final class HomeViewController: UIViewController {
 //MARK: - UICollectionViewDataSource Methods
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        multipleCharactersPresentation.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdemtifier.characters, for: indexPath) as? CharactersCollectionViewCell else { return UICollectionViewCell()}
         cell.contentView.layer.borderWidth = 1.5
         cell.contentView.layer.borderColor = UIColor.black.cgColor
+        let model = multipleCharactersPresentation[indexPath.item]
+        cell.setCharactersImage(model: model)
+        cell.setCharactersLabel(model: model)
+        cell.setGenderImage(model: model)
         return cell
     }
 }
@@ -158,6 +157,9 @@ extension HomeViewController: HomeViewProtocol {
         case .showLocations(let locationPresentation):
             self.locationPresentation = locationPresentation
             createCategoriesButton()
+        case .showMultipleCharacters(let characters):
+            self.multipleCharactersPresentation = characters
+            self.collection.reloadData()
         }
     }
 }

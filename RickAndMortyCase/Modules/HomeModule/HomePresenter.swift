@@ -34,7 +34,8 @@ extension HomePresenter: HomeInteractorDelegate {
             let locationPresentation = location.map {HomePresentation(model: $0)}
             view?.handleOutput(.showLocations(locationPresentation))
         case .showSelectedLocations(let characters):
-          break
+            let showMultipleCharactersPresentation = characters.map {CharacterPresentation(model: $0)}
+            view?.handleOutput(.showMultipleCharacters(showMultipleCharactersPresentation))
         }
     }
 }

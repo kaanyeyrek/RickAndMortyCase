@@ -7,8 +7,7 @@
 
 import Foundation
 
-class HomePresentation {
-    
+final class HomePresentation {
     let id: Int
     let name: String
     let type: String

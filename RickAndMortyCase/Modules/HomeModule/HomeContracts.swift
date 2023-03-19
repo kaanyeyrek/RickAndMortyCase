@@ -29,6 +29,7 @@ protocol HomePresenterProtocol: AnyObject {
 }
 enum HomePresenterOutput {
     case showLocations([HomePresentation])
+    case showMultipleCharacters([CharacterPresentation])
 }
 //MARK: - View
 protocol HomeViewProtocol: AnyObject {

@@ -19,7 +19,6 @@ struct Character: Decodable {
     let origin, location: Location
     let image: String
     let episode: [String]
-    let url: String
     let created: String
 }
 struct Location: Codable {

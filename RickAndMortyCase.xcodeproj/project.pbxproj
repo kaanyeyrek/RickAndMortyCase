@@ -24,6 +24,8 @@
 		CE57C58429C207FA007876F7 /* RMEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58329C207FA007876F7 /* RMEndpoint.swift */; };
 		CE57C58629C227B9007876F7 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58529C227B9007876F7 /* RMModel.swift */; };
 		CE57C58829C23882007876F7 /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58729C23882007876F7 /* HomePresentation.swift */; };
+		CE78686E29C759FE00EBECCF /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78686D29C759FE00EBECCF /* CharactersCollectionViewCell.swift */; };
+		CE78687129C7860E00EBECCF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CE78687029C7860E00EBECCF /* SDWebImage */; };
 		CEAFB2D629C11A580093AE07 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */; };
 		CEAFB2D829C11AB90093AE07 /* HTTPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */; };
 		CEAFB2DA29C11B670093AE07 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D929C11B670093AE07 /* Path.swift */; };
@@ -37,6 +39,7 @@
 		CEEA72C429BB7918009E3549 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72C329BB7918009E3549 /* Constants.swift */; };
 		CEEA72C629BB8131009E3549 /* RMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72C529BB8131009E3549 /* RMLabel.swift */; };
 		CEEA72C829BB9327009E3549 /* RMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA72C729BB9327009E3549 /* RMButton.swift */; };
+		CEFE37BD29C627D300840B55 /* CharactersPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE37BC29C627D300840B55 /* CharactersPresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,7 @@
 		CE57C58329C207FA007876F7 /* RMEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEndpoint.swift; sourceTree = "<group>"; };
 		CE57C58529C227B9007876F7 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		CE57C58729C23882007876F7 /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
+		CE78686D29C759FE00EBECCF /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEndpoint.swift; sourceTree = "<group>"; };
 		CEAFB2D929C11B670093AE07 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 		CEEA72C329BB7918009E3549 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../Downloads/Constants.swift; sourceTree = "<group>"; };
 		CEEA72C529BB8131009E3549 /* RMLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLabel.swift; sourceTree = "<group>"; };
 		CEEA72C729BB9327009E3549 /* RMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMButton.swift; sourceTree = "<group>"; };
+		CEFE37BC29C627D300840B55 /* CharactersPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE78687129C7860E00EBECCF /* SDWebImage in Frameworks */,
 				CEAFB2E429C1205A0093AE07 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +182,7 @@
 		CE0ADFB529BA745E005A8C48 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE78686C29C7598100EBECCF /* Custom Cell */,
 				CE5E60F229BBCE560039D832 /* Reusable Components */,
 			);
 			path = View;
@@ -202,6 +209,14 @@
 				CEEA72C729BB9327009E3549 /* RMButton.swift */,
 			);
 			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		CE78686C29C7598100EBECCF /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE78686D29C759FE00EBECCF /* CharactersCollectionViewCell.swift */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		CEE4AF1229BE60E600F5A4F3 /* RMEndpointService */ = {
@@ -245,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				CE57C58729C23882007876F7 /* HomePresentation.swift */,
+				CEFE37BC29C627D300840B55 /* CharactersPresentation.swift */,
 			);
 			path = HomePresentation;
 			sourceTree = "<group>";
@@ -284,6 +300,7 @@
 			name = RickAndMortyCase;
 			packageProductDependencies = (
 				CEAFB2E329C1205A0093AE07 /* Alamofire */,
+				CE78687029C7860E00EBECCF /* SDWebImage */,
 			);
 			productName = RickAndMortyCase;
 			productReference = CE0ADF9829BA688C005A8C48 /* RickAndMortyCase.app */;
@@ -315,6 +332,7 @@
 			mainGroup = CE0ADF8F29BA688C005A8C48;
 			packageReferences = (
 				CEAFB2E229C1205A0093AE07 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CE78686F29C7860E00EBECCF /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = CE0ADF9929BA688C005A8C48 /* Products */;
 			projectDirPath = "";
@@ -365,9 +383,11 @@
 				CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */,
 				CEAFB2D629C11A580093AE07 /* HTTPMethod.swift in Sources */,
 				CEEA72BB29BB7258009E3549 /* RMImage.swift in Sources */,
+				CEFE37BD29C627D300840B55 /* CharactersPresentation.swift in Sources */,
 				CE57C58829C23882007876F7 /* HomePresentation.swift in Sources */,
 				CE0ADF9E29BA688C005A8C48 /* SceneDelegate.swift in Sources */,
 				CEAFB2DA29C11B670093AE07 /* Path.swift in Sources */,
+				CE78686E29C759FE00EBECCF /* CharactersCollectionViewCell.swift in Sources */,
 				CEEA72C229BB75B7009E3549 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +598,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE78686F29C7860E00EBECCF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CEAFB2E229C1205A0093AE07 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -589,6 +617,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE78687029C7860E00EBECCF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE78686F29C7860E00EBECCF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		CEAFB2E329C1205A0093AE07 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEAFB2E229C1205A0093AE07 /* XCRemoteSwiftPackageReference "Alamofire" */;

@@ -30,7 +30,7 @@ final class RMService: RMServiceInterface {
             switch result {
             case .success(let characters):
                let multipleCharacters = MultipleCharactersModel(characters: characters)
-                completion(.success(multipleCharacters.characters))
+               completion(.success(multipleCharacters.characters))
             case .failure(let error):
                 completion(.failure(error))
             }
