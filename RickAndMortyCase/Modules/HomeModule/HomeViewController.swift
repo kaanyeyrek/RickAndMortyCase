@@ -48,6 +48,7 @@ final class HomeViewController: UIViewController {
         
         logoImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50), size: .init(width: 50, height: 100))
         logoImage.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
+        logoImage.contentMode = .scaleAspectFit
         
         scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: collection.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.frame.width, height: 50))
         scrollView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
@@ -135,6 +136,7 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        presenter.selectedCharacter(at: indexPath.item)
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout Methods

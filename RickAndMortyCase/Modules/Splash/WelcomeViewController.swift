@@ -49,12 +49,14 @@ final class WelcomeViewController: UIViewController {
     private func setLayout() {
         logoImage.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 80, height: 120))
         logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
+        logoImage.contentMode = .scaleAspectFit
         
         welcomeLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
         welcomeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 10).isActive = true
         
-        doneButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 160, bottom: 0, right: 160), size: .init(width: 50, height: 50))
+        doneButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 150, bottom: 0, right: 150), size: .init(width: 50, height: 50))
         doneButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
+       
     }
     private func setupAnimations() {
         logoImage.transform = CGAffineTransform(translationX: -500, y: 0)

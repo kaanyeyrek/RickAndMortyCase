@@ -26,6 +26,11 @@
 		CE57C58829C23882007876F7 /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57C58729C23882007876F7 /* HomePresentation.swift */; };
 		CE78686E29C759FE00EBECCF /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78686D29C759FE00EBECCF /* CharactersCollectionViewCell.swift */; };
 		CE78687129C7860E00EBECCF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CE78687029C7860E00EBECCF /* SDWebImage */; };
+		CE90F54B29CB9A1F00831C3B /* HomeDetailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F54A29CB9A1F00831C3B /* HomeDetailContracts.swift */; };
+		CE90F54D29CB9A3000831C3B /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F54C29CB9A3000831C3B /* HomeDetailViewController.swift */; };
+		CE90F54F29CB9A4200831C3B /* HomeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F54E29CB9A4200831C3B /* HomeDetailPresenter.swift */; };
+		CE90F55129CB9AA200831C3B /* HomeDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F55029CB9AA200831C3B /* HomeDetailInteractor.swift */; };
+		CE90F55329CB9AAB00831C3B /* HomeDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F55229CB9AAB00831C3B /* HomeDetailBuilder.swift */; };
 		CEAFB2D629C11A580093AE07 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */; };
 		CEAFB2D829C11AB90093AE07 /* HTTPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */; };
 		CEAFB2DA29C11B670093AE07 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFB2D929C11B670093AE07 /* Path.swift */; };
@@ -63,6 +68,11 @@
 		CE57C58529C227B9007876F7 /* RMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		CE57C58729C23882007876F7 /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
 		CE78686D29C759FE00EBECCF /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE90F54A29CB9A1F00831C3B /* HomeDetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailContracts.swift; sourceTree = "<group>"; };
+		CE90F54C29CB9A3000831C3B /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
+		CE90F54E29CB9A4200831C3B /* HomeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailPresenter.swift; sourceTree = "<group>"; };
+		CE90F55029CB9AA200831C3B /* HomeDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailInteractor.swift; sourceTree = "<group>"; };
+		CE90F55229CB9AAB00831C3B /* HomeDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailBuilder.swift; sourceTree = "<group>"; };
 		CEAFB2D529C11A580093AE07 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		CEAFB2D729C11AB90093AE07 /* HTTPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEndpoint.swift; sourceTree = "<group>"; };
 		CEAFB2D929C11B670093AE07 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
@@ -197,6 +207,7 @@
 				CE0ADFBB29BA74E7005A8C48 /* HomeInteractor.swift */,
 				CE0ADFBD29BA74FE005A8C48 /* HomeRouter.swift */,
 				CE0ADFBF29BA750D005A8C48 /* HomeBuilder.swift */,
+				CE90F54929CB6E0800831C3B /* HomeDetailModule */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -217,6 +228,18 @@
 				CE78686D29C759FE00EBECCF /* CharactersCollectionViewCell.swift */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		CE90F54929CB6E0800831C3B /* HomeDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE90F54A29CB9A1F00831C3B /* HomeDetailContracts.swift */,
+				CE90F54C29CB9A3000831C3B /* HomeDetailViewController.swift */,
+				CE90F54E29CB9A4200831C3B /* HomeDetailPresenter.swift */,
+				CE90F55029CB9AA200831C3B /* HomeDetailInteractor.swift */,
+				CE90F55229CB9AAB00831C3B /* HomeDetailBuilder.swift */,
+			);
+			path = HomeDetailModule;
 			sourceTree = "<group>";
 		};
 		CEE4AF1229BE60E600F5A4F3 /* RMEndpointService */ = {
@@ -363,13 +386,16 @@
 				CEEA72C829BB9327009E3549 /* RMButton.swift in Sources */,
 				CE0ADFB829BA74C5005A8C48 /* HomeContracts.swift in Sources */,
 				CE0ADFA029BA688C005A8C48 /* HomeViewController.swift in Sources */,
+				CE90F54B29CB9A1F00831C3B /* HomeDetailContracts.swift in Sources */,
 				CE57C58629C227B9007876F7 /* RMModel.swift in Sources */,
 				CE57C58429C207FA007876F7 /* RMEndpoint.swift in Sources */,
 				CE0ADFC229BA8000005A8C48 /* AppContainer.swift in Sources */,
 				CE57C58229C207F1007876F7 /* RMService.swift in Sources */,
+				CE90F54F29CB9A4200831C3B /* HomeDetailPresenter.swift in Sources */,
 				CE0ADFBE29BA74FE005A8C48 /* HomeRouter.swift in Sources */,
 				CEAFB2DC29C11C0B0093AE07 /* CoreService.swift in Sources */,
 				CE0ADF9C29BA688C005A8C48 /* AppDelegate.swift in Sources */,
+				CE90F55129CB9AA200831C3B /* HomeDetailInteractor.swift in Sources */,
 				CEEA72C429BB7918009E3549 /* Constants.swift in Sources */,
 				CE0ADFC029BA750D005A8C48 /* HomeBuilder.swift in Sources */,
 				CEAFB2DE29C11C120093AE07 /* NetworkError.swift in Sources */,
@@ -379,6 +405,7 @@
 				CEEA72BD29BB72E4009E3549 /* Extensions.swift in Sources */,
 				CE5487FD29C3BB1B00A1A4D2 /* MultipleCharactersModel.swift in Sources */,
 				CE0ADFBA29BA74D8005A8C48 /* HomePresenter.swift in Sources */,
+				CE90F54D29CB9A3000831C3B /* HomeDetailViewController.swift in Sources */,
 				CEAFB2D829C11AB90093AE07 /* HTTPEndpoint.swift in Sources */,
 				CE0ADFC429BA804A005A8C48 /* AppRouter.swift in Sources */,
 				CEAFB2D629C11A580093AE07 /* HTTPMethod.swift in Sources */,
@@ -388,6 +415,7 @@
 				CE0ADF9E29BA688C005A8C48 /* SceneDelegate.swift in Sources */,
 				CEAFB2DA29C11B670093AE07 /* Path.swift in Sources */,
 				CE78686E29C759FE00EBECCF /* CharactersCollectionViewCell.swift in Sources */,
+				CE90F55329CB9AAB00831C3B /* HomeDetailBuilder.swift in Sources */,
 				CEEA72C229BB75B7009E3549 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

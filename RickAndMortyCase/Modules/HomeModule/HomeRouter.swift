@@ -15,6 +15,10 @@ final class HomeRouter: HomeRouterProtocol {
         self.view = view
     }
     func navigate(to route: HomeRoute) {
-       
+        switch route {
+        case .detail(let character):
+            let vc = HomeDetailBuilder.make(wih: character)
+            view.show(vc, sender: nil)
+        }
     }
 }

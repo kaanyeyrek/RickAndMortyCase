@@ -13,11 +13,15 @@ final class CharacterPresentation {
     let status: String
     let species: String
     let gender: GenderType
+    let genderString: String
     let origin: LocationPresentation
     let location: LocationPresentation
     let imageUrl: String?
     let episode: [String]
     let createdDate: String
+    var formattedCreatedDate: String? {
+            return createdDate.toDate(with: "dd MMMM yyyy, HH:mm:ss")
+        }
     
     init(model: Character) {
         self.id = model.id
@@ -30,6 +34,7 @@ final class CharacterPresentation {
         self.imageUrl = model.image
         self.episode = model.episode.map { URL(string: $0)?.lastPathComponent ?? ""}
         self.createdDate = model.created
+        self.genderString = model.gender
     }
 }
 final class LocationPresentation {

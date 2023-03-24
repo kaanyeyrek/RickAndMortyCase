@@ -98,3 +98,17 @@ extension UIColor {
         return nil
     }
 }
+// Date extension
+extension String {
+    func toDate(with format: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        guard let date = dateFormatter.date(from: self) else {
+            return nil
+        }
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
+}

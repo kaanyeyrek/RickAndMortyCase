@@ -13,10 +13,13 @@ protocol HomeInteractorProtocol: AnyObject {
     func load()
     func fetchCategoryLocations()
     func showSelectedLocationCharacters(with ids: [String])
+    func selectedCharacter(at index: Int)
+    
 }
 enum HomeInteractorOutput {
     case showCategoryLocations([Locations])
     case showSelectedLocations([Character])
+    case showSelectedCharacter(Character)
 }
 protocol HomeInteractorDelegate: AnyObject {
     func handleOutput(_ output: HomeInteractorOutput)
@@ -24,8 +27,9 @@ protocol HomeInteractorDelegate: AnyObject {
 
 //MARK: - Presenter
 protocol HomePresenterProtocol: AnyObject {
-   func load()
+    func load()
     func didTappedCategoryButton(with ids: [String])
+    func selectedCharacter(at index: Int)
 }
 enum HomePresenterOutput {
     case showLocations([HomePresentation])
@@ -37,9 +41,9 @@ protocol HomeViewProtocol: AnyObject {
 }
 //MARK: - Router
 enum HomeRoute {
-    
+    case detail(Character)
 }
-protocol HomeRouterProtocol {
+protocol HomeRouterProtocol: AnyObject {
     func navigate(to route: HomeRoute)
 }
 

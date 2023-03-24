@@ -49,4 +49,8 @@ final class HomeInteractor: HomeInteractorProtocol {
             }
         }
     }
+    func selectedCharacter(at index: Int) {
+        let model = multipleCharactersModel[index]
+        self.delegate?.handleOutput(.showSelectedCharacter(model))
+    }
 }

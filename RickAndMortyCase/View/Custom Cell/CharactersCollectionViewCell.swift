@@ -28,13 +28,13 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         }
     }
     private func setLayout() {
-        charactersImage.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, size: .init(width: 130, height: self.frame.height))
+        charactersImage.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 5), size: .init(width: 120, height: self.frame.height))
         
         charactersLabel.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 10), size: .init(width: 80, height: 70))
         charactersLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 115).isActive = true
         
-        charactersGenderImage.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 10, left: 10, bottom: 10, right: 0), size: .init(width: 150, height: 50))
-        charactersGenderImage.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 20).isActive = true
+        charactersGenderImage.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 10, left: 0, bottom: 10, right: 0), size: .init(width: 150, height: 50))
+        charactersGenderImage.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 25).isActive = true
         self.sendSubviewToBack(charactersGenderImage)
     }
     func setCharactersImage(model: CharacterPresentation) {

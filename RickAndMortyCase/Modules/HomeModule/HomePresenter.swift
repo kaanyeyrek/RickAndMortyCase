@@ -25,6 +25,9 @@ final class HomePresenter: HomePresenterProtocol {
     func didTappedCategoryButton(with ids: [String]) {
         interactor.showSelectedLocationCharacters(with: ids)
     }
+    func selectedCharacter(at index: Int) {
+        interactor.selectedCharacter(at: index)
+    }
 }
 //MARK: - HomeInteractor Delegate / Handling HomeInteractorOutput
 extension HomePresenter: HomeInteractorDelegate {
@@ -36,6 +39,8 @@ extension HomePresenter: HomeInteractorDelegate {
         case .showSelectedLocations(let characters):
             let showMultipleCharactersPresentation = characters.map {CharacterPresentation(model: $0)}
             view?.handleOutput(.showMultipleCharacters(showMultipleCharactersPresentation))
+        case .showSelectedCharacter(let selectedCharacter):
+            router.navigate(to: .detail(selectedCharacter))
         }
     }
 }
