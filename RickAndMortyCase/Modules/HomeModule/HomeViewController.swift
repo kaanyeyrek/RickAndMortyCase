@@ -20,6 +20,7 @@ final class HomeViewController: UIViewController {
     private var selectedButton: [UIButton] = []
     private var locationPresentation: [HomePresentation] = []
     private var multipleCharactersPresentation: [CharacterPresentation] = []
+    private let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,9 +56,15 @@ final class HomeViewController: UIViewController {
         
         categoryStackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: scrollView.frame.width, height: 50))
         categoryStackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor).isActive = true
+        
+        indicator.centerYAnchor.constraint(equalTo: categoryStackView.centerYAnchor).isActive = true
+        indicator.leadingAnchor.constraint(equalTo: categoryStackView.trailingAnchor).isActive = true
+        indicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
     }
     private func setSubviews() {
-        [collection, logoImage, scrollView].forEach { elements in
+        [collection, logoImage, scrollView, indicator].forEach { elements in
             view.addSubview(elements)
         }
     }
@@ -76,6 +83,7 @@ final class HomeViewController: UIViewController {
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        scrollView.delegate = self
     }
     private func setStackView() {
         scrollView.addSubview(categoryStackView)
@@ -100,8 +108,14 @@ final class HomeViewController: UIViewController {
             }
         }
     }
+    private func reloadData() {
+        DispatchQueue.main.async {
+            self.collection.reloadData()
+        }
+    }
 //MARK: - @objc actions
     @objc private func didTappedCategoryButton(index: UIButton) {
+        removeEmptyStateView()
         for previousSelectedButton in selectedButton {
             previousSelectedButton.configuration?.baseBackgroundColor = UIColor(hex: Color.purple)
         }
@@ -113,6 +127,7 @@ final class HomeViewController: UIViewController {
           if let categoryPresentation = locationPresentation.first(where: {$0.name == category}) {
               let ids = categoryPresentation.residents.compactMap { URL(string: $0)?.lastPathComponent}
               presenter.didTappedCategoryButton(with: ids)
+              collection.reloadData()
           }
     }
 }
@@ -152,17 +167,48 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         return .init(20)
     }
 }
+//MARK: - UIScrollViewDelegate Methods
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let contentOffSet = scrollView.contentOffset.x
+        let contentWidth = scrollView.contentSize.width
+        let frameWidth = scrollView.frame.width
+        
+        if contentOffSet + frameWidth >= contentWidth {
+            self.presenter.loadNextLocationPage()
+        }
+    }
+}
 //MARK: - HomeViewProtocol / Handling PresenterOutput
 extension HomeViewController: HomeViewProtocol {
     func handleOutput(_ output: HomePresenterOutput) {
         switch output {
         case .showLocations(let locationPresentation):
             self.locationPresentation = locationPresentation
+            self.reloadData()
             createCategoriesButton()
         case .showMultipleCharacters(let characters):
             self.multipleCharactersPresentation = characters
-            self.collection.reloadData()
+            self.reloadData()
+        case .showNextPageLocations(let nextPageLocations):
+            UIView.animate(withDuration: 2) {
+                self.locationPresentation = nextPageLocations
+                self.reloadData()
+                self.createCategoriesButton()
+            }
+        case .setLoading(let loading):
+            if !loading {
+                self.indicator.startAnimating()
+                self.indicator.isHidden = false
+            } else {
+                self.indicator.stopAnimating()
+                self.indicator.isHidden = true
+                }
+        case .showEmptyView(let words):
+            showEmptyStateView(with: words, at: self.view)
+        case .removeEmptyView:
+            removeEmptyStateView()
         }
+                self.indicator.hidesWhenStopped = false
     }
 }
-

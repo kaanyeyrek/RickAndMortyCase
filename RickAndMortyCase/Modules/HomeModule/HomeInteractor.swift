@@ -53,4 +53,21 @@ final class HomeInteractor: HomeInteractorProtocol {
         let model = multipleCharactersModel[index]
         self.delegate?.handleOutput(.showSelectedCharacter(model))
     }
+    func getNextLocation() {
+        self.delegate?.handleOutput(.setLoading(true))
+        currentPage += 1
+        service.fetchLocation(endPoint: .getLocations(page: currentPage)) { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.delegate?.handleOutput(.setLoading(false))
+                switch result {
+                case .success(let locations):
+                    self.locationResultModel = locations.results
+                    self.delegate?.handleOutput(.showNextCategoryLocations(locations.results))
+                case .failure(let error):
+                    print("Error \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }

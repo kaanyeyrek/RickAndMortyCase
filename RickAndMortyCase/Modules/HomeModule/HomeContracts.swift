@@ -14,12 +14,15 @@ protocol HomeInteractorProtocol: AnyObject {
     func fetchCategoryLocations()
     func showSelectedLocationCharacters(with ids: [String])
     func selectedCharacter(at index: Int)
+    func getNextLocation()
     
 }
 enum HomeInteractorOutput {
     case showCategoryLocations([Locations])
+    case showNextCategoryLocations([Locations])
     case showSelectedLocations([Character])
     case showSelectedCharacter(Character)
+    case setLoading(Bool)
 }
 protocol HomeInteractorDelegate: AnyObject {
     func handleOutput(_ output: HomeInteractorOutput)
@@ -30,10 +33,15 @@ protocol HomePresenterProtocol: AnyObject {
     func load()
     func didTappedCategoryButton(with ids: [String])
     func selectedCharacter(at index: Int)
+    func loadNextLocationPage()
 }
 enum HomePresenterOutput {
     case showLocations([HomePresentation])
+    case showNextPageLocations([HomePresentation])
     case showMultipleCharacters([CharacterPresentation])
+    case setLoading(Bool)
+    case showEmptyView(String)
+    case removeEmptyView
 }
 //MARK: - View
 protocol HomeViewProtocol: AnyObject {

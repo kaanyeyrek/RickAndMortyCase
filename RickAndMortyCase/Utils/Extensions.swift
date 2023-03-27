@@ -7,6 +7,8 @@
 
 import UIKit
 
+private var emptyView: RMView?
+
 // NSLayout Ex
 struct AnchoredConstraints {
     var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
@@ -112,3 +114,20 @@ extension String {
         return dateFormatter.string(from: date)
     }
 }
+// Empty View
+    func showEmptyStateView(with message: String, at view: UIView) {
+        DispatchQueue.main.async {
+            emptyView?.removeFromSuperview()
+            emptyView = RMView(message: message)
+            guard let emptyView = emptyView else { return }
+            emptyView.frame = CGRect(x: 0, y: view.bounds.height/2 - 50, width: view.bounds.width, height: 100)
+            view.addSubview(emptyView)
+        }
+    }
+// Remove empty view
+    func removeEmptyStateView() {
+        DispatchQueue.main.async {
+            emptyView?.removeFromSuperview()
+        }
+}
+
