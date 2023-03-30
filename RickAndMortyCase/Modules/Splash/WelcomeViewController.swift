@@ -59,9 +59,9 @@ final class WelcomeViewController: UIViewController {
        
     }
     private func setupAnimations() {
-        logoImage.transform = CGAffineTransform(translationX: -500, y: 0)
-        welcomeLabel.transform = CGAffineTransform(translationX: 500, y: 0)
-        doneButton.transform = CGAffineTransform(translationX: -500, y: 0)
+        logoImage.transform = CGAffineTransform(translationX: -1000, y: 0)
+        welcomeLabel.transform = CGAffineTransform(translationX: 1000, y: 0)
+        doneButton.transform = CGAffineTransform(translationX: -1000, y: 0)
         UIView.animate(withDuration: 1.3, delay: 0.6 * 1.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseOut) {
                     self.logoImage.transform = .identity
                     self.welcomeLabel.transform = .identity

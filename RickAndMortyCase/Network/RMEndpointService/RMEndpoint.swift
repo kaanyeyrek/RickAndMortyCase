@@ -25,7 +25,7 @@ enum RMEndpoint: HTTPEndpoint {
         case .getLocations(let page):
             return [URLQueryItem(name: "page", value: String(page))]
         case .getMultipleCharacters(_):
-           return nil
+           return nil 
         }
     }
 }

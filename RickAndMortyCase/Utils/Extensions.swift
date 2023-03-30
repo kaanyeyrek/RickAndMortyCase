@@ -72,6 +72,17 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
     }
+    func anchorSize(to view: UIView, widthMultiplier: CGFloat = 1.0, heightMultiplier: CGFloat = 1.0) -> AnchoredConstraints {
+        translatesAutoresizingMaskIntoConstraints = false
+        var anchoredConstraints = AnchoredConstraints()
+        anchoredConstraints.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: widthMultiplier)
+        anchoredConstraints.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: heightMultiplier)
+        let anchorArray = [anchoredConstraints.width, anchoredConstraints.height]
+        anchorArray.forEach({
+            $0?.isActive = true
+        })
+        return anchoredConstraints
+    }
 }
 // UIColor Extension
 extension UIColor {
@@ -130,4 +141,5 @@ extension String {
             emptyView?.removeFromSuperview()
         }
 }
+
 

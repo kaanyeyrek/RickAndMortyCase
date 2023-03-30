@@ -46,23 +46,23 @@ final class HomeViewController: UIViewController {
     }
     private func setLayout() {
         collection.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.frame.width, height: view.frame.height-250))
-        
+            
         logoImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50), size: .init(width: 50, height: 100))
         logoImage.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
         logoImage.contentMode = .scaleAspectFit
-        
+            
         scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: collection.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.frame.width, height: 50))
         scrollView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
-        
+            
         categoryStackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: scrollView.frame.width, height: 50))
         categoryStackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor).isActive = true
-        
+            
         indicator.centerYAnchor.constraint(equalTo: categoryStackView.centerYAnchor).isActive = true
         indicator.leadingAnchor.constraint(equalTo: categoryStackView.trailingAnchor).isActive = true
         indicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
         indicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
         indicator.translatesAutoresizingMaskIntoConstraints = false
-    }
+        }
     private func setSubviews() {
         [collection, logoImage, scrollView, indicator].forEach { elements in
             view.addSubview(elements)
@@ -205,7 +205,8 @@ extension HomeViewController: HomeViewProtocol {
                 self.indicator.isHidden = true
                 }
         case .showEmptyView(let words):
-            showEmptyStateView(with: words, at: self.view)
+            break
+//            showEmptyStateView(with: words, at: self.view)
         case .removeEmptyView:
             removeEmptyStateView()
         }
