@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - Endpoint url structure
 protocol HTTPEndpoint {
     var scheme: String { get }
     var host: String { get }

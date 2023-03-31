@@ -18,9 +18,11 @@ final class HomeInteractor: HomeInteractorProtocol {
     init(service: RMServiceInterface = RMService(coreService: CoreService())) {
         self.service = service
     }
+//MARK: - LifeCycle
     func load() {
         fetchCategoryLocations()
     }
+    // fetch location 
     func fetchCategoryLocations() {
         service.fetchLocation(endPoint: .getLocations(page: currentPage)) { [weak self] result in
             guard let self = self else { return }
@@ -35,6 +37,7 @@ final class HomeInteractor: HomeInteractorProtocol {
             }
         }
     }
+    // select location category
     func showSelectedLocationCharacters(with ids: [String]) {
         service.fetchMultipleCharacters(endPoint: .getMultipleCharacters(ids: ids)) { [weak self] result in
             guard let self = self else { return }
@@ -49,10 +52,12 @@ final class HomeInteractor: HomeInteractorProtocol {
             }
         }
     }
+    // select detail
     func selectedCharacter(at index: Int) {
         let model = multipleCharactersModel[index]
         self.delegate?.handleOutput(.showSelectedCharacter(model))
     }
+    // next page for location
     func getNextLocation() {
         self.delegate?.handleOutput(.setLoading(true))
         currentPage += 1

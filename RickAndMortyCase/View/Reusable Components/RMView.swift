@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// reusable empty view
 class RMView: UIView {
     
     let headerLabel = RMLabel(setText: nil, setTextColor: .lightGray, size: 20, setAlignment: .center, setFontName: "AvenirNext-Bold")

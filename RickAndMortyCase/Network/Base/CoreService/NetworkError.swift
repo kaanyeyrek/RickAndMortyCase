@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - Custom error handling
 enum NetworkError: String, Error {
     case badURL
     case badResponse

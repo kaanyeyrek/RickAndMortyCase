@@ -15,13 +15,13 @@ protocol RMServiceInterface {
 final class RMService: RMServiceInterface {
  
     private let coreService: CoreServiceProtocol
-    
+    // inject 
     init(coreService: CoreServiceProtocol) {
         self.coreService = coreService
     }
-    
+    // we use coreservice as core
     func fetchLocation(endPoint: RMEndpoint, completion: @escaping (Result<RMModel, NetworkError>) -> Void) {
-        coreService.fetch(endPoint: endPoint) { (result: Result<RMModel, NetworkError>) in
+        coreService.makeRequest(endPoint: endPoint) { (result: Result<RMModel, NetworkError>) in
             completion(result)
         }
     }

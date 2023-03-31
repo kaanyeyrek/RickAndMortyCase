@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// reusable imageView
 class RMImage: UIImageView {
 
     override init(frame: CGRect) {

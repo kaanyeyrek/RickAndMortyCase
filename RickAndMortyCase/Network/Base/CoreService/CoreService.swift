@@ -9,13 +9,14 @@ import Foundation
 import Alamofire
 
 protocol CoreServiceProtocol: AnyObject {
-    func fetch<T: Decodable>(endPoint: HTTPEndpoint, completion: @escaping (Result<T, NetworkError>) -> Void)
+    func makeRequest<T: Decodable>(endPoint: HTTPEndpoint, completion: @escaping (Result<T, NetworkError>) -> Void)
     func fetchArray<T: Decodable>(endPoint: HTTPEndpoint, completion: @escaping (Result<[T], NetworkError>) -> Void)
 }
 
 final class CoreService: CoreServiceProtocol {
-    
-    func fetch<T>(endPoint: HTTPEndpoint, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
+    // Make default request
+    func makeRequest<T>(endPoint: HTTPEndpoint, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
+        // set url connection
         var urlComponents = URLComponents()
         urlComponents.scheme = endPoint.scheme
         urlComponents.host = endPoint.host
@@ -25,10 +26,9 @@ final class CoreService: CoreServiceProtocol {
         guard let url = urlComponents.url else { return
             completion(.failure(.badURL))
         }
-        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endPoint.method.rawValue
-        
+        // 3rd party library
         AF.request(urlRequest).validate(statusCode: 200..<300).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let decodedData):
@@ -47,6 +47,7 @@ final class CoreService: CoreServiceProtocol {
     }
     // Fetch Array Request
     func fetchArray<T>(endPoint: HTTPEndpoint, completion: @escaping (Result<[T], NetworkError>) -> Void) where T : Decodable {
+        // set url connection
         var urlComponents = URLComponents()
         urlComponents.scheme = endPoint.scheme
         urlComponents.host = endPoint.host
@@ -56,10 +57,9 @@ final class CoreService: CoreServiceProtocol {
         guard let url = urlComponents.url else { return
             completion(.failure(.badURL))
         }
-        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endPoint.method.rawValue
-        
+        // 3rd party library
         AF.request(urlRequest).validate(statusCode: 200..<300).responseData { response in
             switch response.result {
             case .success(let data):
@@ -76,6 +76,7 @@ final class CoreService: CoreServiceProtocol {
                         completion(.failure(.decoding))
                             }
                     }
+                // error handling
             case .failure(let error):
                 switch error {
                 case .responseValidationFailed(let reason):

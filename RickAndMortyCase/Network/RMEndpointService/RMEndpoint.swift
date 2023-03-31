@@ -8,10 +8,10 @@
 import Foundation
 
 enum RMEndpoint: HTTPEndpoint {
-    
+    // Endpoint query case
     case getLocations(page: Int)
     case getMultipleCharacters(ids: [String])
-    
+    // Set url path
     var path: String {
         switch self {
         case .getMultipleCharacters(let ids):
@@ -20,6 +20,7 @@ enum RMEndpoint: HTTPEndpoint {
             return Path.location.rawValue
         }
     }
+    // Set url query
     var query: [URLQueryItem]? {
         switch self {
         case .getLocations(let page):

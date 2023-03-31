@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// reusable label
 class RMLabel: UILabel {
 
     override init(frame: CGRect) {

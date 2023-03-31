@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// reusable button
 class RMButton: UIButton {
 
     override init(frame: CGRect) {

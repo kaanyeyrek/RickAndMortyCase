@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// presentation object for direct communication for view 
 final class HomePresentation {
     let id: Int
     let name: String

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - Path
 enum Path: String {
     case location = "/api/location"
 }

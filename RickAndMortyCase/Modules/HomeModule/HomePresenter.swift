@@ -20,10 +20,11 @@ final class HomePresenter: HomePresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
+//MARK: - LifeCycle
     func load() {
         interactor.load()
         if presentation.isEmpty {
-            view?.handleOutput(.showEmptyView("Select location to see your characters!"))
+            view?.handleOutput(.showEmptyView("Select location!"))
         } else {
             view?.handleOutput(.removeEmptyView)
         }

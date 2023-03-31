@@ -14,6 +14,7 @@ final class HomeRouter: HomeRouterProtocol {
     init(view: UIViewController) {
         self.view = view
     }
+    
     func navigate(to route: HomeRoute) {
         switch route {
         case .detail(let character):

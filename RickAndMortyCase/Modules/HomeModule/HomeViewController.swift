@@ -91,6 +91,7 @@ final class HomeViewController: UIViewController {
         categoryStackView.distribution = .fillProportionally
         categoryStackView.spacing = 13
     }
+    // set categories button
     private func createCategoriesButton() {
         if !locationPresentation.isEmpty {
             for index in 0..<locationPresentation.count {
@@ -116,21 +117,18 @@ final class HomeViewController: UIViewController {
 //MARK: - @objc actions
     @objc private func didTappedCategoryButton(index: UIButton) {
         removeEmptyStateView()
-        for previousSelectedButton in selectedButton {
-            previousSelectedButton.configuration?.baseBackgroundColor = UIColor(hex: Color.purple)
-        }
+        collection.setContentOffset(CGPoint(x: 0, y: -collection.adjustedContentInset.top), animated: true)
+        selectedButton.forEach { $0.configuration?.baseBackgroundColor = UIColor(hex: Color.purple) }
         index.configuration?.baseBackgroundColor = UIColor(hex: Color.selectedCategoryColor)
         selectedButton = [index]
-        guard let category = index.currentTitle else {
-              return
-          }
-          if let categoryPresentation = locationPresentation.first(where: {$0.name == category}) {
-              let ids = categoryPresentation.residents.compactMap { URL(string: $0)?.lastPathComponent}
-              presenter.didTappedCategoryButton(with: ids)
-              collection.reloadData()
+        guard let category = index.currentTitle,
+                 let categoryPresentation = locationPresentation.first(where: { $0.name == category }) else {
+               return
+           }
+        let ids = categoryPresentation.residents.compactMap { URL(string: $0)?.lastPathComponent}
+        presenter.didTappedCategoryButton(with: ids)
           }
     }
-}
 //MARK: - UICollectionViewDataSource Methods
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -157,7 +155,7 @@ extension HomeViewController: UICollectionViewDelegate {
 //MARK: - UICollectionViewDelegateFlowLayout Methods
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (view.frame.width)
+        let width: CGFloat = view.frame.width
         return .init(width: width - 40, height: 170)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -205,8 +203,7 @@ extension HomeViewController: HomeViewProtocol {
                 self.indicator.isHidden = true
                 }
         case .showEmptyView(let words):
-            break
-//            showEmptyStateView(with: words, at: self.view)
+            showEmptyStateView(with: words, at: self.view)
         case .removeEmptyView:
             removeEmptyStateView()
         }

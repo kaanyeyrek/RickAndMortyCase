@@ -126,15 +126,22 @@ extension String {
     }
 }
 // Empty View
-    func showEmptyStateView(with message: String, at view: UIView) {
-        DispatchQueue.main.async {
-            emptyView?.removeFromSuperview()
-            emptyView = RMView(message: message)
-            guard let emptyView = emptyView else { return }
-            emptyView.frame = CGRect(x: 0, y: view.bounds.height/2 - 50, width: view.bounds.width, height: 100)
-            view.addSubview(emptyView)
+func showEmptyStateView(with message: String, at view: UIView) {
+    DispatchQueue.main.async {
+        emptyView?.removeFromSuperview()
+        emptyView = RMView(message: message)
+        guard let emptyView = emptyView else { return }
+        let emptyViewHeight: CGFloat = 50
+        let emptyViewY: CGFloat
+        if view.bounds.width > view.bounds.height { // landscape mode
+            emptyViewY = (view.bounds.height - emptyViewHeight) / 2 + 30
+        } else { // portrait mode
+            emptyViewY = (view.bounds.height - emptyViewHeight) / 2 + 30
         }
+        emptyView.frame = CGRect(x: 0, y: emptyViewY, width: view.bounds.width, height: emptyViewHeight)
+        view.addSubview(emptyView)
     }
+}
 // Remove empty view
     func removeEmptyStateView() {
         DispatchQueue.main.async {

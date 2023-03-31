@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// default request model 
 struct RMModel: Decodable {
     let results: [Locations]
 }

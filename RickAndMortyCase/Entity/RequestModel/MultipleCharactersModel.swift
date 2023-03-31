@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// detail characters request model
 struct MultipleCharactersModel: Decodable {
     let characters: [Character]
 }

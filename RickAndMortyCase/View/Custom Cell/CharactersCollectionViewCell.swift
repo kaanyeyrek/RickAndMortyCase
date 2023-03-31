@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-
+// characters custom collection
 class CharactersCollectionViewCell: UICollectionViewCell {
     
     private let charactersImage = RMImage(radius: nil, setImage: nil)
