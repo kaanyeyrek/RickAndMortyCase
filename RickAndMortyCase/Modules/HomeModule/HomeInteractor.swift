@@ -57,7 +57,7 @@ final class HomeInteractor: HomeInteractorProtocol {
         let model = multipleCharactersModel[index]
         self.delegate?.handleOutput(.showSelectedCharacter(model))
     }
-    // next page for location
+    // next page for location 
     func getNextLocation() {
         self.delegate?.handleOutput(.setLoading(true))
         currentPage += 1
