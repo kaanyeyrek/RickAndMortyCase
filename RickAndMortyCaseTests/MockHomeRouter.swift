@@ -15,6 +15,4 @@ final class MockHameRouter: HomeRouterProtocol {
     func navigate(to route: RickAndMortyCase.HomeRoute) {
         routes.append(route)
     }
-    
-    
 }

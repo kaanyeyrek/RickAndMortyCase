@@ -148,5 +148,16 @@ func showEmptyStateView(with message: String, at view: UIView) {
             emptyView?.removeFromSuperview()
         }
 }
+extension Array {
+    
+    struct IndexOutOfBoundsError: Error { }
+    
+    func element(at index: Int) throws -> Element {
+        guard index >= 0 && index < self.count else {
+            throw IndexOutOfBoundsError()
+        }
+        return self[index]
+    }
+}
 
 

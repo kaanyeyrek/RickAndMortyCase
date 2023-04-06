@@ -11,9 +11,9 @@ import Foundation
 final class MockHomeView: HomeViewProtocol {
     
     var outputs: [HomePresenterOutput] = []
+    var presenter: HomePresenter!
     
     func handleOutput(_ output: RickAndMortyCase.HomePresenterOutput) {
-        outputs.append(output)
+            self.outputs.append(output)
     }
-
 }
