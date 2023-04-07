@@ -18,10 +18,10 @@ final class RickAndMortyCaseTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockService = MockService()
-        interactor = MockInteractor()
-        mockHomeView = MockHomeView()
-        mockHomeRouter = MockHameRouter()
+        mockService = .init()
+        interactor = .init()
+        mockHomeView = .init()
+        mockHomeRouter = .init()
         presenter = .init(view: mockHomeView, interactor: interactor, router: mockHomeRouter)
         mockHomeView.presenter = presenter
     }
@@ -74,6 +74,42 @@ final class RickAndMortyCaseTests: XCTestCase {
         
         XCTAssertTrue(interactor.invokedScrollPagination)
         XCTAssertEqual(interactor.invokedScrollPaginationCount, 1)
+    }
+    func test_serviceFetchCategoryLocation_Success() {
+        mockService.locationsResponse = .success(RMModel(results: [Locations(id: 1, name: "test_name", type: "test_type", dimension: "test_dimension", residents: [], url: "test_url", created: "test_date")]))
+        let expectedPage: Int = 1
+        XCTAssertFalse(mockService.invokedFetchLocation)
+        XCTAssertEqual(mockService.invokedFetchLocationCount, 0)
+        
+        mockService.fetchLocation(endPoint: .getLocations(page: expectedPage)) { result in
+            
+            XCTAssertTrue(self.mockService.invokedFetchLocation)
+            XCTAssertEqual(self.mockService.invokedFetchLocationCount, 1)
+                   
+            switch result {
+            case .success(let model):
+                XCTAssertEqual(model.results.count, 1)
+            case .failure(let error):
+                XCTFail("Failure \(error.localizedDescription)")
+            }
+        }
+    }
+    func test_serviceFetchMultipleCharacters_Success() {
+        mockService.charactersResponse = .success([Character(id: 1, name: "test_name", status: "test_status", species: "test_species", gender: "test_gender", origin: Location(name: "test_name", url: "test_url"), location: Location(name: "test_name", url: "test_Url"), image: "test_image", episode: [], created: "test_created")])
+        let expectedId: [String] = ["test_name_id"]
+        XCTAssertFalse(mockService.invokedFetchMultipleCharacters)
+        XCTAssertEqual(mockService.invokedFetchMultipleCharactersCount, 0)
+        
+        mockService.fetchMultipleCharacters(endPoint: .getMultipleCharacters(ids: expectedId)) { result in
+            XCTAssertTrue(self.mockService.invokedFetchMultipleCharacters)
+            XCTAssertEqual(self.mockService.invokedFetchMultipleCharactersCount, 1)
+            switch result {
+            case .success(let model):
+                XCTAssertEqual(model.count, 1)
+            case .failure(let error):
+                XCTFail("Failure \(error.localizedDescription)")
+            }
+        }
     }
 }
 

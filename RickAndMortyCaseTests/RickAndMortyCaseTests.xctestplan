@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "A82EBE38-0813-43F1-841B-083545212EBF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:RickAndMortyCase.xcodeproj",
+        "identifier" : "CE08263029DCA02800A7413F",
+        "name" : "RickAndMortyCaseTests"
+      }
+    }
+  ],
+  "version" : 1
+}

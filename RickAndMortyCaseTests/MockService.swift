@@ -10,22 +10,32 @@ import Foundation
 
 final class MockService: RMServiceInterface {
     
-    var shouldReturnError: Bool = false
+    // fetch location method trigger
+    var invokedFetchLocation: Bool = false
+    var invokedFetchLocationCount: Int = 0
     var locationsResponse: Result<RMModel, NetworkError>?
-    var charactersResponse: Result<[Character], NetworkError>?
-    
+
     func fetchLocation(endPoint: RickAndMortyCase.RMEndpoint, completion: @escaping (Result<RickAndMortyCase.RMModel, RickAndMortyCase.NetworkError>) -> Void) {
-        if let response = locationsResponse {
-            completion(response)
-        } else if shouldReturnError {
+        invokedFetchLocation = true
+        invokedFetchLocationCount += 1
+        guard let response = locationsResponse else {
             completion(.failure(.badData))
+            return
         }
+        completion(response)
     }
+    // invoked fetchMultipleCharacters method trigger
+    var invokedFetchMultipleCharacters: Bool = false
+    var invokedFetchMultipleCharactersCount: Int = 0
+    var charactersResponse: Result<[Character], NetworkError>?
+
     func fetchMultipleCharacters(endPoint: RickAndMortyCase.RMEndpoint, completion: @escaping (Result<[RickAndMortyCase.Character], RickAndMortyCase.NetworkError>) -> Void) {
-        if let response = charactersResponse {
-            completion(response)
-        } else if shouldReturnError {
-            completion(.failure(.badData))
+        invokedFetchMultipleCharacters = true
+        invokedFetchMultipleCharactersCount += 1
+        guard let response = charactersResponse else {
+            completion(.failure(.badResponse))
+            return
         }
+        completion(response)
     }
 }

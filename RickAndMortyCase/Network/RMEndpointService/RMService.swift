@@ -15,7 +15,7 @@ protocol RMServiceInterface {
 final class RMService: RMServiceInterface {
  
     private let coreService: CoreServiceProtocol
-    // inject 
+    // inject dependency
     init(coreService: CoreServiceProtocol) {
         self.coreService = coreService
     }

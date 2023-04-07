@@ -102,6 +102,7 @@
 		CEAFB2DB29C11C0B0093AE07 /* CoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		CEAFB2DD29C11C120093AE07 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CEB6FD0F29D226A700DFE2F2 /* RMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMView.swift; sourceTree = "<group>"; };
+		CEDA333029E05CC300D6B03E /* RickAndMortyCaseTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = RickAndMortyCaseTests.xctestplan; sourceTree = "<group>"; };
 		CEEA72BA29BB7258009E3549 /* RMImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImage.swift; sourceTree = "<group>"; };
 		CEEA72BC29BB72E4009E3549 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEEA72BE29BB730E009E3549 /* CheckFirstLoginMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstLoginMethod.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 				CE9092FB29DDEED200E9AD20 /* MockInteractor.swift */,
 				CE08264729DCBB6600A7413F /* MockHomeRouter.swift */,
 				CE9092F729DD9F2100E9AD20 /* MockService.swift */,
+				CEDA333029E05CC300D6B03E /* RickAndMortyCaseTests.xctestplan */,
 			);
 			path = RickAndMortyCaseTests;
 			sourceTree = "<group>";

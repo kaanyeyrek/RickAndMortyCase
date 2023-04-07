@@ -148,6 +148,7 @@ func showEmptyStateView(with message: String, at view: UIView) {
             emptyView?.removeFromSuperview()
         }
 }
+// unit test check array element
 extension Array {
     
     struct IndexOutOfBoundsError: Error { }
